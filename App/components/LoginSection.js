@@ -12,7 +12,7 @@ function LoginSection({ style }) {
       <AppText style={styles.slogan}>Because you deserve to eat fresh</AppText>
       <LoginInputField label={"Email"} />
       <LoginInputField label={"Password"} />
-      <AppButton name={"LOGIN"} />
+      <AppButton name={"LOGIN"} style={{ marginVertical: 20 }} />
     </View>
   );
 }

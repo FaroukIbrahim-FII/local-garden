@@ -7,4 +7,5 @@ export default {
   selected: "#E2CBFF",
   activeArea: "#F6F5F5",
   borderColor: "#D9D0E3",
+  textSelected: "#6C0EE4",
 };
