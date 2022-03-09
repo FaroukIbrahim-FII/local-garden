@@ -4,9 +4,10 @@ import HomeScreen from "./App/screens/HomeScreen";
 import Welcome from "./App/screens/Welcome";
 import Screen from "./App/components/Screen";
 import Icon from "./App/components/Icon";
+import DetailedScreen from "./App/screens/DetailedScreen";
 
 export default function App() {
-  return <HomeScreen />;
+  return <DetailedScreen />;
 }
 
 const styles = StyleSheet.create({
