@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, ScrollView, FlatList } from "react-native";
 import FilterOption from "./FilterOption";
 
@@ -20,23 +20,38 @@ const secondDataRow = filterListData.slice(
 );
 
 function FitlerList({ style }) {
+  const [selected, setSelected] = useState();
   return (
     <View style={style}>
       <FlatList
         data={firstDataRow}
         contentContainerStyle={{ alignSelf: "flex-start" }}
+        showsHorizontalScrollIndicator={false}
         horizontal
-        //   numColumns={Math.ceil(secondDataRow.length / 2)}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <FilterOption name={item.name} />}
+        renderItem={({ item }) => (
+          <FilterOption
+            name={item.name}
+            selected={selected === item.id ? true : false}
+            onPress={() =>
+              selected === item.id ? setSelected(null) : setSelected(item.id)
+            }
+          />
+        )}
       />
       <FlatList
         data={secondDataRow}
         contentContainerStyle={{ alignSelf: "flex-start" }}
+        showsHorizontalScrollIndicator={false}
         horizontal
-        //   numColumns={Math.ceil(secondDataRow.length / 2)}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <FilterOption name={item.name} />}
+        renderItem={({ item }) => (
+          <FilterOption
+            name={item.name}
+            selected={selected === item.id ? true : false}
+            onPress={() => setSelected(item.id)}
+          />
+        )}
       />
     </View>
   );

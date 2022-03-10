@@ -1,36 +1,37 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import colors from "../config/colors";
 import AppText from "./AppText";
 import IconApp from "./Icon";
-import Screen from "./Screen";
 
-function FilterOption({ style, selected = false, name }) {
+function FilterOption({ style, onPress, selected, name }) {
   return (
-    <View
-      style={[
-        styles.container,
-        style,
-        { backgroundColor: selected ? colors.selected : colors.white },
-      ]}
-    >
-      {selected ? (
-        <IconApp
-          icon={"check"}
-          style={styles.icon}
-          color={colors.textSelected}
-        />
-      ) : null}
-
-      <AppText
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View
         style={[
-          styles.text,
-          { color: selected ? colors.textSelected : colors.textSecondary },
+          styles.container,
+          style,
+          { backgroundColor: selected ? colors.selected : colors.white },
         ]}
       >
-        {name}
-      </AppText>
-    </View>
+        {selected ? (
+          <IconApp
+            icon={"check"}
+            style={styles.icon}
+            color={colors.textSelected}
+          />
+        ) : null}
+
+        <AppText
+          style={[
+            styles.text,
+            { color: selected ? colors.textSelected : colors.textSecondary },
+          ]}
+        >
+          {name}
+        </AppText>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 

@@ -1,56 +1,64 @@
 import React from "react";
-import { View, StyleSheet, NativeModules, Platform } from "react-native";
+import { StyleSheet, View } from "react-native";
 import AppText from "../components/AppText";
 import VegeList from "../components/VegeList";
-import VegeListItem from "../components/VegeListItem";
 import colors from "../config/colors";
-import Screen from "../components/Screen";
-import IconApp from "../components/Icon";
 import AppInputField from "../components/AppInputField";
-import FilterOption from "../components/FilterOption";
 import FitlerList from "../components/FitlerList";
-const { StatusBarManager } = NativeModules;
+import VegeVec from "../assets/VegeVec.svg";
 
-function HomeScreen(props) {
+function HomeScreen() {
   return (
-    <Screen style={styles.container}>
-      <AppText style={styles.text}>Vegetables</AppText>
-      <AppInputField
-        icon={"magnify"}
-        size={20}
-        placeholder={"Search"}
-        style={styles.inputField}
-      />
+    <View style={styles.container}>
+      <VegeVec style={styles.vegeVec} />
+      <View style={styles.upperDiv}>
+        <AppText style={styles.text}>Vegetables</AppText>
+        <AppInputField
+          icon={"magnify"}
+          size={20}
+          placeholder={"Search"}
+          style={styles.inputField}
+        />
+      </View>
       <FitlerList style={styles.filterOption} />
-      <VegeList style={styles.list} />
-    </Screen>
+      <View style={styles.listDiv}>
+        <VegeList />
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     paddingTop: 0,
-    paddingHorizontal: "2%",
-    // Platform.OS === "ios" ? 15 : 5,
     flex: 1,
     backgroundColor: colors.activeArea,
   },
+  upperDiv: {
+    justifyContent: "flex-end",
+    flex: 0.6,
+    marginTop: "8%",
+    paddingHorizontal: "2%",
+  },
   text: {
-    top: "8%",
     color: colors.textPrimary,
     fontWeight: "700",
     fontSize: 30,
     lineHeight: 41,
   },
   inputField: {
-    top: "20%",
+    marginTop: "5%",
   },
   filterOption: {
-    backgroundColor: "yellow",
-    top: "10%",
+    marginTop: "5%",
   },
-  list: {
-    top: "12%",
+  vegeVec: {
+    position: "absolute",
+    alignSelf: "flex-end",
+  },
+  listDiv: {
+    flex: 2,
+    paddingHorizontal: "2%",
   },
 });
 

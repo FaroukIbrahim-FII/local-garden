@@ -6,7 +6,6 @@ import {
   Platform,
   NativeModules,
 } from "react-native";
-import AppText from "./AppText";
 const { StatusBarManager } = NativeModules;
 
 const statusBarHeight =
@@ -33,9 +32,3 @@ const styles = StyleSheet.create({
 });
 
 export default Screen;
-
-// Platform.OS === "android"
-// ? StatusBarManager.Height
-// : StatusBarManager.getHeight((statusBarHeight) => {
-//     console.log(statusBarHeight);
-// }),

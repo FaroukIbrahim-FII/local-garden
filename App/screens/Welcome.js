@@ -1,24 +1,20 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  Image,
-  Platform,
-  StatusBar,
-} from "react-native";
-import LoginInputField from "../components/LoginInputField";
+import { View, StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
 import LoginSection from "../components/LoginSection";
 import colors from "../config/colors";
-import Logo from "../components/Logo";
-import Ellipse from "../components/Ellipse";
+import UpperWelcome from "../components/UpperWelcome";
 
-function Welcome(props) {
+function Welcome() {
   return (
-    <View style={styles.container}>
-      <Logo style={styles.logo} />
-      <LoginSection style={styles.loginSection} />
-    </View>
+    <KeyboardAvoidingView
+      style={styles.loginKeyboard}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <View style={styles.container}>
+        <UpperWelcome style={styles.logoSection} />
+        <LoginSection style={styles.loginSection} />
+      </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -26,13 +22,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    justifyContent: "flex-end",
     backgroundColor: colors.background,
   },
   loginSection: {
-    top: "22.8%",
+    flex: 1.5,
   },
-  logo: {
-    top: "10%",
+  loginKeyboard: {
+    width: "100%",
+    height: "100%",
+  },
+  logoSection: {
+    flex: 1,
   },
 });
 

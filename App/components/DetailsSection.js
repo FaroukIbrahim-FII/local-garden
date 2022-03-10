@@ -1,50 +1,55 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import colors from "../config/colors";
 import AppButton from "./AppButton";
 import AppText from "./AppText";
+import { useRoute } from "@react-navigation/native";
 
 function DetailsSection({ style }) {
+  const route = useRoute();
+
   return (
-    <View style={[styles.container, style]}>
-      <AppText style={styles.header}>Boston Lettuce</AppText>
-      <View style={styles.priceDiv}>
-        <AppText style={styles.price}>1.10</AppText>
-        <AppText style={styles.piece}>€ / piece</AppText>
+    <ScrollView style={[styles.container, style]}>
+      <View>
+        <AppText style={styles.header}>{route.params.name}</AppText>
+        <View style={styles.priceDiv}>
+          <AppText style={styles.price}>{route.params.price}</AppText>
+          <AppText style={styles.piece}>€ / {route.params.unit}</AppText>
+        </View>
+        <AppText style={styles.grams}>~ 150 gr / piece</AppText>
+        <AppText style={styles.description}>Description</AppText>
+        <AppText style={styles.details}>
+          Lettuce is an annual plant of the daisy family, Asteraceae. It is most
+          often grown as a leaf vegetable, but sometimes for its stem and seeds.
+          Lettuce is most often used for salads, although it is also seen in
+          other kinds of food, such as soups, sandwiches and wraps; it can also
+          be grilled.
+        </AppText>
+        <View style={styles.buttonDiv}>
+          <AppButton
+            icon="heart-outline"
+            size={20}
+            backgroundColor={colors.white}
+            color="#9586A8"
+            style={{ flex: 1, marginRight: 10, paddingVertical: 10 }}
+          />
+          <AppButton
+            name="ADD TO CART"
+            icon="cart-outline"
+            color={colors.white}
+            size={20}
+            style={{ flex: 4, paddingVertical: 10 }}
+          />
+        </View>
       </View>
-      <AppText style={styles.grams}>~ 150 gr / piece</AppText>
-      <AppText style={styles.description}>Description</AppText>
-      <AppText style={styles.details}>
-        Lettuce is an annual plant of the daisy family, Asteraceae. It is most
-        often grown as a leaf vegetable, but sometimes for its stem and seeds.
-        Lettuce is most often used for salads, although it is also seen in other
-        kinds of food, such as soups, sandwiches and wraps; it can also be
-        grilled.
-      </AppText>
-      <View style={styles.buttonDiv}>
-        <AppButton
-          icon="heart-outline"
-          size={20}
-          backgroundColor={colors.white}
-          color="#9586A8"
-          style={{ flex: 1, marginRight: 10, paddingVertical: 10 }}
-        />
-        <AppButton
-          name="ADD TO CART"
-          icon="cart-outline"
-          color={colors.white}
-          size={20}
-          style={{ flex: 4, paddingVertical: 10 }}
-        />
-      </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    height: "70%",
-    borderRadius: 20,
+    borderTopLeftRadius: 22,
+    borderTopRightRadius: 22,
     backgroundColor: colors.activeArea,
     zIndex: 1,
     padding: 15,
@@ -99,6 +104,7 @@ const styles = StyleSheet.create({
   buttonDiv: {
     marginTop: 40,
     flexDirection: "row",
+    marginBottom: "10%",
   },
 });
 

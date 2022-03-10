@@ -1,44 +1,58 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import colors from "../config/colors";
 import AppButton from "./AppButton";
 import AppText from "./AppText";
 
-function VegeListItem({ image, name, price, unit }) {
+function VegeListItem({ image, name, price, unit, onPress }) {
+  const { navigate } = useNavigation();
+
   return (
-    <View style={styles.container}>
-      <Image source={image} />
-      <View style={styles.details}>
-        <AppText style={styles.item}>{name}</AppText>
-        <View style={styles.priceContainer}>
-          <AppText style={styles.price}>{price}</AppText>
-          <AppText style={styles.piece}>€ / {unit}</AppText>
-        </View>
-        <View style={styles.buttons}>
-          <AppButton
-            style={{ marginRight: 5, width: "33%" }}
-            backgroundColor={colors.white}
-            textStyle={{ color: colors.textPrimary }}
-            icon="heart-outline"
-            size={25}
-            color="#9586A8"
-          />
-          <AppButton
-            icon="cart-outline"
-            color={colors.white}
-            size={25}
-            style={{ marginLeft: 5, width: "33%" }}
-          />
+    <TouchableOpacity
+      onPress={() =>
+        navigate("Detailed", {
+          image: image,
+          name: name,
+          price: price,
+          unit: unit,
+        })
+      }
+    >
+      <View style={styles.container}>
+        <Image source={image} />
+        <View style={styles.details}>
+          <AppText style={styles.item}>{name}</AppText>
+          <View style={styles.priceContainer}>
+            <AppText style={styles.price}>{price}</AppText>
+            <AppText style={styles.piece}>€ / {unit}</AppText>
+          </View>
+          <View style={styles.buttons}>
+            <AppButton
+              style={{ marginRight: 5, width: "33%" }}
+              backgroundColor={colors.white}
+              textStyle={{ color: colors.textPrimary }}
+              icon="heart-outline"
+              size={25}
+              color="#9586A8"
+            />
+            <AppButton
+              icon="cart-outline"
+              color={colors.white}
+              size={25}
+              style={{ marginLeft: 5, width: "33%" }}
+            />
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    marginVertical: 20,
+    marginVertical: 15,
   },
   priceContainer: {
     paddingRight: 5,

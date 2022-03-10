@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../config/colors";
 import AppText from "./AppText";
 import IconApp from "./Icon";
@@ -19,8 +19,12 @@ function AppButton({
       style={[styles.container, style, { backgroundColor }]}
       onPress={onPress}
     >
-      {icon ? <IconApp icon={icon} size={size} color={color} /> : null}
-      {name ? <AppText style={[styles.text, textStyle]}>{name}</AppText> : null}
+      <>
+        {icon ? <IconApp icon={icon} size={size} color={color} /> : null}
+        {name ? (
+          <AppText style={[styles.text, textStyle]}>{name}</AppText>
+        ) : null}
+      </>
     </TouchableOpacity>
   );
 }

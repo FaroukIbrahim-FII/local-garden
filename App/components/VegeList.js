@@ -11,6 +11,27 @@ const vegeData = [
     unit: "piece",
   },
   {
+    id: 4,
+    image: require("../assets/lettuce.png"),
+    name: "Boston Lettuce",
+    price: "1.10",
+    unit: "piece",
+  },
+  {
+    id: 5,
+    image: require("../assets/lettuce.png"),
+    name: "Boston Lettuce",
+    price: "1.10",
+    unit: "piece",
+  },
+  {
+    id: 6,
+    image: require("../assets/lettuce.png"),
+    name: "Boston Lettuce",
+    price: "1.10",
+    unit: "piece",
+  },
+  {
     id: 2,
     image: require("../assets/cauliflower.png"),
     name: "Savoy Cabbage",
@@ -46,9 +67,7 @@ function VegeList({ style }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    // top: 200,
-  },
+  container: {},
 });
 
 export default VegeList;
