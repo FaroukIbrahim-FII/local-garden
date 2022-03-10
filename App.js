@@ -10,6 +10,7 @@ import HomeNavigator from "./App/navigations/HomeNavigation";
 import theme from "./App/navigations/navigationTheme";
 import "react-native-gesture-handler";
 import { LogBox } from "react-native";
+import Slider from "./App/components/Slider";
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
@@ -20,6 +21,7 @@ export default function App() {
     <NavigationContainer theme={theme}>
       <HomeNavigator />
     </NavigationContainer>
+    // <Slider />
   );
 }
 

@@ -1,9 +1,18 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet } from "react-native";
 import DetailsSection from "../components/DetailsSection";
 import AppButton from "../components/AppButton";
 import colors from "../config/colors";
 import { useNavigation } from "@react-navigation/native";
+import Slider from "../components/Slider";
+
+const images = [
+  { id: 1, image: require("../assets/lettuceBig.png") },
+  { id: 2, image: require("../assets/lettuceBig.png") },
+  { id: 3, image: require("../assets/lettuceBig.png") },
+  { id: 4, image: require("../assets/lettuceBig.png") },
+  { id: 5, image: require("../assets/lettuceBig.png") },
+];
 
 function DetailedScreen() {
   const { navigate } = useNavigation();
@@ -11,7 +20,7 @@ function DetailedScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.upper}>
-        <Image source={require("../assets/lettuceBig.png")} />
+        <Slider images={images} />
       </View>
       <AppButton
         icon="chevron-left"
